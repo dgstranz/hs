@@ -1,6 +1,5 @@
 #!/bin/env node
 
-
 var util = require('util'),
     http = require('http'),
     fs = require('fs'),
@@ -27,23 +26,17 @@ function escapeHtml(value) {
 function createServlet(Class) {
     var servlet = new Class();
     return servlet.handleRequest.bind(servlet);
-
 }
 
 
 function HttpServer(handlers) {
-    
-
     this.handlers = handlers;
     this.server = http.createServer(this.handleRequest_.bind(this));
-    
 }
 
 HttpServer.prototype.start = function (port) {
-
     this.port = process.env.OPENSHIFT_NODEJS_PORT;
     this.server.listen(port, process.env.OPENSHIFT_NODEJS_IP);
-
 };
 
 HttpServer.prototype.parseUrl_ = function (urlString) {
@@ -386,17 +379,12 @@ fs.fileExistsSync = function (filePath) {
 }
 
 fs.mkdirSyncRecursive = function(dirPath) {
-
     try{
         fs.mkdirSync(dirPath)
     } catch(e) {
-        
         fs.mkdirSyncRecursive(path.dirname(dirPath));
-     
         fs.mkdirSyncRecursive(dirPath);
-
     }
-
 };
 
 main(process.argv);
