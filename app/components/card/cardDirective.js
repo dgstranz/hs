@@ -5,7 +5,7 @@ angular.module('myApp.directives.card', [])
 		scope: {
 			data: '='
 		},
-		templateUrl: 'components/card/cardView.html',
+		templateUrl: '/app/components/card/cardView.html',
 		link: function(scope, element, attrs) {
 			console.log(element);
 			element.onclick = function() {

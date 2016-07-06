@@ -1,7 +1,7 @@
 <p>This is the partial for view 1.</p>
 
 <ol>
-<div ng-repeat="card in cards | filter:{collectible: true}">
+<div ng-repeat="card in cards | filter:{collectible: true, cost: 12}">
   <card data="card"></card>
 </div>
 </ol>

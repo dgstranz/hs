@@ -1,17 +1,30 @@
 {
-  "name": "angularjs-seed-openshift",
+  "name": "hs",
   "description": "A quickstart AngularJS project for OpenShift",
-  "repository": "https://github.com/brandanmajeske/angular-seed-openshift",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandanmajeske/angular-seed-openshift.git"
+  },
   "devDependencies": {
-    "phantomjs" : "~1.9",
-    "karma" : "~0.10",
-    "karma-junit-reporter" : "~0.1",
-    "karma-jasmine" : "~0.1",
-    "karma-ng-scenario" : "~0.1",
+    "phantomjs": "~1.9",
+    "karma": "~0.10",
+    "karma-junit-reporter": "~0.1",
+    "karma-jasmine": "~0.1",
+    "karma-ng-scenario": "~0.1",
     "express": "*"
   },
   "main": "scripts/server.js",
   "scripts": {
     "start": "node scripts/server.js"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/brandanmajeske/angular-seed-openshift/issues"
+  },
+  "homepage": "https://github.com/brandanmajeske/angular-seed-openshift#readme",
+  "version": "1.0.0",
+  "directories": {
+    "test": "test"
+  },
+  "author": "dgstranz <dgstranz@gmail.com>",
+  "license": "ISC"
 }
