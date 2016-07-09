@@ -1,0 +1,64 @@
+<p>Query</p>
+
+<div ng-controller="cardController">
+  <form novalidate class="card-query">
+    <table>
+      <tr>
+        <td>Name:</td>
+        <td><input type="text" ng-model="data.name"></td>
+        <td>Language:</td>
+        <td><input type="text" ng-model="data.lang"></td>
+      </tr>
+      <tr>
+        <td>Format:</td>
+        <td>
+          <select name="format" ng-model="data.format">
+            <option value="wild">Wild</option>
+            <option value="standard">Standard</option>
+            <option value="out">Out of Standard</option>
+          </select>
+        </td>
+        <td>Set:</td>
+        <td>
+          <select name="set" ng-model="data.set">
+            <optgroup label="Core">
+              <option value="">Basic</option>
+              <option value="">Classic</option>
+            </optgroup>
+            <optgroup label="Expansions">
+              <option value="GVG">Gnomes vs. Goblins</option>
+              <option value="TGT">The Grand Tournament</option>
+              <option value="OG">Whispers of the Old Gods</option>
+            </optgroup>
+            <optgroup label="Adventures">
+              <option value="NAXX">Naxxramas</option>
+              <option value="BRM">Blackrock Mountain</option>
+              <option value="LOE">League of Explorers</option>
+            </optgroup>
+            <option value="">Wild</option>
+            <option value="">Standard</option>
+            <option value="">Out of Standard</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Only collectible:
+        <td><input type="checkbox" ng-model="data.collectible" /></td>
+      </tr>
+      <tr>
+        <td>Cost:</td>
+        <td colspan="3"><input type="number" ng-model="data.cost"> <input type="number" ng-model="data.cost.min">-<input type="number" ng-model="data.cost.max"></td>
+      </tr>
+      <tr>
+        <td><input type="reset" ng-click="reset()" value="Reset" /></td>
+        <td><input type="submit" ng-click="submit(data)" value="Submit" /></td>
+      </tr>
+    </table>
+  </form>
+  <pre>data = {{data | json}}</pre>
+  <pre>query = {{query | json}}</pre>
+  
+  <div ng-repeat="card in cards | filter: query | limitTo: 20">
+    <card cardinfo="card" lang="esES"></card>
+  </div>
+</div>

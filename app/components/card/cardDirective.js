@@ -1,20 +1,24 @@
-angular.module('myApp.directives.card', [])
-.directive('card', function() {
+'use strict';
+
+app.directive('card', function() {
 	return {
 		restrict: 'E',
 		scope: {
-			data: '='
+			cardinfo: '=',
+			locale: '='
 		},
 		templateUrl: '/app/components/card/cardView.html',
 		link: function(scope, element, attrs) {
-			console.log(element);
+			scope.lang = attrs.lang;
+			console.log(attrs);
 			element.onclick = function() {
 				console.log(element);
-				console.log(attrs);
 			};
+			//debugger
 		},
 		controller: function($scope) {
-			console.log($scope.data);
+			console.log($scope.cardinfo);
+			//console.log($scope.lang);
 		}
 	}
 });

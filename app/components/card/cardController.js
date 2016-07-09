@@ -1,14 +1,24 @@
 'use strict';
 
-/* Controllers */
-
-angular.module('myApp.controllers.card', [])
-	.controller('cardController', function($scope, $http) {
-		$http.get('https://api.hearthstonejson.com/v1/latest/all/cards.json')
-		.success(function(data, status, headers, config) {
-			$scope.cards = data;
-		})
-		.error(function(data, status, headers, config) {
-			console.log('error loading cards');
-		});
+app.controller('cardController', ['$scope', 'cardFactory', function($scope, cardFactory) {
+	$scope.cards = [];
+	cardFactory.getCards().success(function(data) {
+		$scope.cards = data;
+	}).error(function(data, status, headers, config) {
+		console.log('Error loading cards.');
 	});
+	
+	$scope.query = {};
+
+	$scope.submit = function(data) {
+		console.log('submit');
+		$scope.query = angular.copy(data);
+	};
+
+	$scope.reset = function() {
+		console.log('reset');
+		$scope.data = {};
+	};
+
+	$scope.reset();
+}]);
