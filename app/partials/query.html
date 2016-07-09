@@ -55,10 +55,10 @@
       </tr>
     </table>
   </form>
-  <pre>data = {{data | json}}</pre>
   <pre>query = {{query | json}}</pre>
   
-  <div ng-repeat="card in cards | filter: query | limitTo: 20">
+  <div ng-if="showCards" ng-repeat="card in cards | filter: query | limitTo: 20">
     <card cardinfo="card" lang="esES"></card>
+    <pre>{{card | json}}</pre>
   </div>
 </div>

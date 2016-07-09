@@ -8,15 +8,16 @@ app.controller('cardController', ['$scope', 'cardFactory', function($scope, card
 		console.log('Error loading cards.');
 	});
 	
+	$scope.showCards = true; // Should be false in production
+	
 	$scope.query = {};
 
 	$scope.submit = function(data) {
-		console.log('submit');
 		$scope.query = angular.copy(data);
+		$scope.showCards = true;
 	};
 
 	$scope.reset = function() {
-		console.log('reset');
 		$scope.data = {};
 	};
 
