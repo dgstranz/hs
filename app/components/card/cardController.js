@@ -79,15 +79,24 @@ app.controller('cardController', ['$scope', 'cardFactory', function($scope, card
 			return true;
 		};
 		
-		//numberFields.forEach(function(field) {
+		if (query.name && (card.name.esES.indexOf(query.name) < 0)) {
+			return false;
+		}
+		
+		if (query.type && (card.type != query.type)) {
+			return false;
+		}
+		
+		if (query.set && (card.set != query.set)) {
+			return false;
+		}
+		
 		for (var i = 0; i < numberFields.length; i++) {
 			if (!numberFilter(card, numberFields[i])) {
 				return false;
 			}
 		};
 		
-		//return rangeFilter(card, 'cost');
-		//return (card.set == query.set);
 		return true;
 	}
 }]);
