@@ -1,17 +1,17 @@
-<p>Query</p>
-
-<div ng-controller="cardController">
+<div>
+  <h1>Query</h1>
+  
   <form novalidate class="card-query">
-    <table>
-      <div ng-class="tr">
-        <div ng-class="td">Name:</div>
-        <div ng-class="td"><input type="text" ng-model="data.name"></div>
-        <div ng-class="td">Language:</div>
-        <div ng-class="td"><input type="text" ng-model="data.lang"></div>
+    <div class="table">
+      <div class="table-row">
+        <div class="table-cell">Name:</div>
+        <div class="table-cell"><input type="text" ng-model="data.name"></div>
+        <div class="table-cell">Language:</div>
+        <div class="table-cell"><input type="text" ng-model="data.lang"></div>
       </div>
-      <div ng-class="tr">
-        <div ng-class="td">Type:</div>
-        <div ng-class="td">
+      <div class="table-row">
+        <div class="table-cell">Type:</div>
+        <div class="table-cell">
           <select name="type" ng-model="data.type">
             <option value="MINION">Minion</option>
             <option value="SPELL">Spell</option>
@@ -22,17 +22,17 @@
           </select>
         </div>
       </div>
-      <div ng-class="tr">
-        <div ng-class="td">Format:</div>
-        <div ng-class="td">
+      <div class="table-row">
+        <div class="table-cell">Format:</div>
+        <div class="table-cell">
           <select name="format" ng-model="data.format">
             <option value="wild">Wild</option>
             <option value="standard">Standard</option>
             <option value="out">Out of Standard</option>
           </select>
         </div>
-        <div ng-class="td">Set:</div>
-        <div ng-class="td">
+        <div class="table-cell">Set:</div>
+        <div class="table-cell">
           <select name="set" ng-model="data.set">
             <optgroup label="Core">
               <option value="CORE">Basic</option>
@@ -60,67 +60,67 @@
           </select>
         </div>
       </div>
-      <div ng-class="tr">
-        <div ng-class="td">Only collectible:
-        <div ng-class="td"><input type="checkbox" checked ng-model="data.collectible" /></div>
+      <div class="table-row">
+        <div class="table-cell">Only collectible:
+        <div class="table-cell"><input type="checkbox" checked ng-model="data.collectible" /></div>
       </div>
-      <div ng-class="tr" bgcolor="red">
-        <div ng-class="td">Cost:</div>
-        <div ng-class="td" colspan="2">
+      <div class="table-row" bgcolor="red">
+        <div class="table-cell">Cost:</div>
+        <div class="table-cell" colspan="2">
           <select ng-model="data.cost.mode" ng-init="data.cost.mode = 'exact'">
             <option value="exact">Exact value</option>
             <option value="range">Range</option>
           </select>
         </div>
-        <div ng-class="td">
+        <div class="table-cell">
           <span ng-if="data.cost.mode == 'exact'"><input type="number" ng-model="data.cost.value"></span>
           <span ng-if="data.cost.mode == 'range'"><input type="number" ng-model="data.cost.min">-<input type="number" ng-model="data.cost.max"></span>
         </div>
       </div>
-      <div ng-class="tr" ng-if="data.type == 'MINION'">
-        <div ng-class="td">Attack:</div>
-        <div ng-class="td" colspan="2">
+      <div class="table-row" ng-if="data.type == 'MINION'">
+        <div class="table-cell">Attack:</div>
+        <div class="table-cell" colspan="2">
           <select ng-model="data.attack.mode" ng-init="data.attack.mode = 'exact'">
             <option value="exact">Exact value</option>
             <option value="range">Range</option>
           </select>
         </div>
-        <div ng-class="td">
+        <div class="table-cell">
           <span ng-if="data.attack.mode == 'exact'"><input type="number" ng-model="data.attack.value"></span>
           <span ng-if="data.attack.mode == 'range'"><input type="number" ng-model="data.attack.min">-<input type="number" ng-model="data.attack.max"></span>
         </div>
       </div>
-      <div ng-class="tr">
-        <div ng-class="td">Health:</div>
-        <div ng-class="td" colspan="2">
+      <div class="table-row">
+        <div class="table-cell">Health:</div>
+        <div class="table-cell" colspan="2">
           <select ng-model="data.health.mode" ng-init="data.health.mode = 'exact'">
             <option value="exact">Exact value</option>
             <option value="range">Range</option>
           </select>
         </div>
-        <div ng-class="td">
+        <div class="table-cell">
           <span ng-if="data.health.mode == 'exact'"><input type="number" ng-model="data.health.value"></span>
           <span ng-if="data.health.mode == 'range'"><input type="number" ng-model="data.health.min">-<input type="number" ng-model="data.health.max"></span>
         </div>
       </div>
-      <div ng-class="tr" ng-if="data.type == 'WEAPON'">
-        <div ng-class="td">Durability:</div>
-        <div ng-class="td" colspan="2">
+      <div class="table-row" ng-if="data.type == 'WEAPON'">
+        <div class="table-cell">Durability:</div>
+        <div class="table-cell" colspan="2">
           <select ng-model="data.durability.mode" ng-init="data.durability.mode = 'exact'">
             <option value="exact">Exact value</option>
             <option value="range">Range</option>
           </select>
         </div>
-        <div ng-class="td">
+        <div class="table-cell">
           <span ng-if="data.durability.mode == 'exact'"><input type="number" ng-model="data.durability.value"></span>
           <span ng-if="data.durability.mode == 'range'"><input type="number" ng-model="data.durability.min">-<input type="number" ng-model="data.durability.max"></span>
         </div>
       </div>
-      <div ng-class="tr">
-        <div ng-class="td"><input type="reset" ng-click="reset()" value="Reset" /></div>
-        <div ng-class="td"><input type="submit" ng-click="submit(data)" value="Submit" /></div>
+      <div class="table-row">
+        <div class="table-cell"><input type="reset" ng-click="reset()" value="Reset" /></div>
+        <div class="table-cell"><input type="submit" ng-click="submit(data)" value="Submit" /></div>
       </div>
-    </table>
+    </div>
   </form>
   <!--<pre>query = {{query | json}}</pre>-->
   
