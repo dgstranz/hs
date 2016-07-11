@@ -1,6 +1,8 @@
 <div>
   <h1>Query</h1>
-  
+</div>
+
+<div>
   <form novalidate class="card-query">
     <div class="table">
       <div class="table-row">
@@ -123,7 +125,9 @@
     </div>
   </form>
   <!--<pre>query = {{query | json}}</pre>-->
+</div>
   
+<div>
   <div ng-if="showCards">
     <div ng-repeat="card in cards | filter: cardFilter | limitTo: 20">
       <card cardinfo="card" lang="esES"></card>
