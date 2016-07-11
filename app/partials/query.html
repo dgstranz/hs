@@ -10,6 +10,19 @@
         <td><input type="text" ng-model="data.lang"></td>
       </tr>
       <tr>
+        <td>Type:</td>
+        <td>
+          <select name="type" ng-model="data.type">
+            <option value="MINION">Minion</option>
+            <option value="SPELL">Spell</option>
+            <option value="WEAPON">Weapon</option>
+            <option value="HERO">Hero</option>
+            <option value="HERO_POWER">Hero power</option>
+            <option value="ENCHANTMENT">Enchantment</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
         <td>Format:</td>
         <td>
           <select name="format" ng-model="data.format">
@@ -22,8 +35,8 @@
         <td>
           <select name="set" ng-model="data.set">
             <optgroup label="Core">
-              <option value="">Basic</option>
-              <option value="">Classic</option>
+              <option value="CORE">Basic</option>
+              <option value="EXPERT1">Classic</option>
             </optgroup>
             <optgroup label="Expansions">
               <option value="GVG">Gnomes vs. Goblins</option>
@@ -35,19 +48,46 @@
               <option value="BRM">Blackrock Mountain</option>
               <option value="LOE">League of Explorers</option>
             </optgroup>
-            <option value="">Wild</option>
-            <option value="">Standard</option>
-            <option value="">Out of Standard</option>
+            <optgroup label="Special">
+              <option value="CHEAT">Cheat</option>
+              <option value="CREDITS">Credits</option>
+              <option value="HERO_SKINS">Hero Skins</option>
+              <option value="MISSIONS">Missions</option>
+              <option value="PROMO">Promo</option>
+              <option value="REWARD">Reward</option>
+              <option value="TB">Tavern Brawl</option>
+            </optgroup>
           </select>
         </td>
       </tr>
       <tr>
         <td>Only collectible:
-        <td><input type="checkbox" ng-model="data.collectible" /></td>
+        <td><input type="checkbox" checked ng-model="data.collectible" /></td>
       </tr>
       <tr>
         <td>Cost:</td>
-        <td colspan="3"><input type="number" ng-model="data.cost"> <input type="number" ng-model="data.cost.min">-<input type="number" ng-model="data.cost.max"></td>
+        <td colspan="2">
+          <select ng-model="data.cost.mode" ng-init="data.cost.mode = 'exact'">
+            <option value="exact">Exact value</option>
+            <option value="range">Range</option>
+          </select>
+        </td>
+        <td>
+          <span ng-if="data.cost.mode == 'exact'"><input type="number" ng-model="data.cost.value"></span>
+          <span ng-if="data.cost.mode == 'range'"><input type="number" ng-model="data.cost.min">-<input type="number" ng-model="data.cost.max"></span>
+        </td>
+      </tr>
+      <tr ng-if="data.type == 'MINION'">
+        <td>Attack:</td>
+        <td colspan="3"><input type="number" ng-model="data.attack.value"> <input type="number" ng-model="data.attack.min">-<input type="number" ng-model="data.attack.max"></td>
+      </tr>
+      <tr>
+        <td>Health:</td>
+        <td colspan="3"><input type="number" ng-model="data.health.value"> <input type="number" ng-model="data.health.min">-<input type="number" ng-model="data.health.max"></td>
+      </tr>
+      <tr ng-if="data.type == 'WEAPON'">
+        <td>Durability</td>
+        <td colspan="3"><input type="number" ng-model="data.durability.value"> <input type="number" ng-model="data.durability.min">-<input type="number" ng-model="data.durability.max"></td>
       </tr>
       <tr>
         <td><input type="reset" ng-click="reset()" value="Reset" /></td>
@@ -57,8 +97,10 @@
   </form>
   <pre>query = {{query | json}}</pre>
   
-  <div ng-if="showCards" ng-repeat="card in cards | filter: query | limitTo: 20">
-    <card cardinfo="card" lang="esES"></card>
-    <pre>{{card | json}}</pre>
+  <div ng-if="showCards">
+    <div ng-repeat="card in cards | filter: cardFilter | limitTo: 20">
+      <card cardinfo="card" lang="esES"></card>
+      <pre>{{card | json}}</pre>
+    </div>
   </div>
 </div>
