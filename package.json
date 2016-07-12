@@ -1,9 +1,9 @@
 {
   "name": "hs",
-  "description": "A quickstart AngularJS project for OpenShift",
+  "description": "A small Hearthstone application",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brandanmajeske/angular-seed-openshift.git"
+    "url": "git+https://github.com/dgstranz/hs.git"
   },
   "devDependencies": {
     "phantomjs": "~1.9",
@@ -17,10 +17,7 @@
   "scripts": {
     "start": "node scripts/server.js"
   },
-  "bugs": {
-    "url": "https://github.com/brandanmajeske/angular-seed-openshift/issues"
-  },
-  "homepage": "https://github.com/brandanmajeske/angular-seed-openshift#readme",
+  "homepage": "https://github.com/dgstranz/hs#readme",
   "version": "1.0.0",
   "directories": {
     "test": "test"
